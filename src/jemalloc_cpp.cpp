@@ -228,12 +228,14 @@ sizedDeleteImpl(void* ptr, std::size_t size) noexcept {
 
 void
 operator delete(void *ptr, std::size_t size) noexcept {
-	sizedDeleteImpl(ptr, size);
+	// sizedDeleteImpl(ptr, size);
+	je_free_impl(ptr);
 }
 
 void
 operator delete[](void *ptr, std::size_t size) noexcept {
-	sizedDeleteImpl(ptr, size);
+	// sizedDeleteImpl(ptr, size);
+	je_free_impl(ptr);
 }
 
 #endif  // __cpp_sized_deallocation
@@ -296,12 +298,14 @@ operator delete[](void* ptr, std::align_val_t, const std::nothrow_t&) noexcept {
 
 void
 operator delete(void* ptr, std::size_t size, std::align_val_t alignment) noexcept {
-	alignedSizedDeleteImpl(ptr, size, alignment);
+	// alignedSizedDeleteImpl(ptr, size, alignment);
+	je_free_impl(ptr);
 }
 
 void
 operator delete[](void* ptr, std::size_t size, std::align_val_t alignment) noexcept {
-	alignedSizedDeleteImpl(ptr, size, alignment);
+	// alignedSizedDeleteImpl(ptr, size, alignment);
+	je_free_impl(ptr);
 }
 
 #endif  // __cpp_aligned_new
